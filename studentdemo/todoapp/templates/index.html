@@ -7,6 +7,18 @@
 <body>
 <h1>My cool to-do app</h1>
 
+{% if user.is_authenticated %}
+    Welcome, {{ user.username }}!
+{% else %}
+    Welcome, Guest!
+{% endif %}
+{% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Sign Out">
+    </form>
+{% endif %}
+
 <h2>List of tasks:</h2>
 <ul>
     {% for task in tasks %}
