@@ -9,6 +9,11 @@
 
 {% if user.is_authenticated %}
     Welcome, {{ user.username }}!
+    {% if user.is_omniscient %}
+        <p>Status: You are an omniscient user. You have the power to see everyone's tasks.</p>
+    {% else %}
+        <p>Status: You are a regular user and can only see your own tasks.</p>
+    {% endif %}
 {% else %}
     Welcome, Guest!
 {% endif %}
